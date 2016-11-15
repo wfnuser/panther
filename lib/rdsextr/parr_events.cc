@@ -52,6 +52,10 @@ bool accum_weight_setter_event(RGrapgh * _G , size_t node_start, size_t node_end
             double sum = 0;
             std::vector<NeighborNode> * _neighbors = &(_node->neighbors);
             for(std::vector<NeighborNode>::iterator it=_neighbors->begin(); it != _neighbors->end() ; it++){
+                //
+                printf("node %d's neighbors are: %d",item,it->id);
+                printf("\n");
+                //
                 sum += it->weight;
             }
             if(_node->neighbors.size() > 0 ) {
@@ -89,6 +93,7 @@ inline size_t rpg_sim_bs(const std::vector<NeighborNode> & nabors, double val){
 
 bool random_path_generator_event(RGrapgh * _G , size_t pathid_start, size_t pathid_end ) {
     size_t nsize = _G->nsize();
+    printf("nsize is : %d\n", nsize);
     for(size_t pathid = pathid_start; pathid < pathid_end ; pathid++ ){
         size_t curr_node = rand() % nsize;// 0 - N-1
         GPath * _path = _G->get_path(pathid);
